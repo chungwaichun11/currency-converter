@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Currency Converter</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <link href="currencyConverterStyle.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+        <style> @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap'); </style>
+    </head>
+
+    <body>
+        <div id="converter">
+            <header>Currency Converter</header>
+            <div class="converter-body">
+                <div id="date">
+                    <header>Convert rates on :</header>
+                    <input type="date" id="day" name="day" v-model="date"> </input>
+                </div>
+
+                <div class="body">
+                    <div id="amount" class="box">
+                        <header>AMOUNT</header>
+                        <input type="number" id="input-amoung" v-model="amount" @input="hideResult()">
+                    </div>
+                        
+                    <div id="from" class="box">
+                        <header>FROM</header>
+                        <select id="original-currency" v-model="original" @input="hideResult()">
+                        </select>
+                    </div>
+
+                    <div id="to" class="box">
+                        <header>TO</header>
+                        <select id="target-currency" v-model="target" @input="hideResult()">
+
+                        </select>
+                    </div>
+
+                    <div id="submit">
+                        <button type="submit" @click="convert()"> CONVERT </button>
+                    </div>
+                </div>
+
+                <div id="warning"></div>
+
+                <div id="result" hidden>
+                    <header>{{amount}} in {{original}} :</header>
+                    <h1 id="final-value">{{final}}</h1>
+                    <h1 id="final">{{target}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <script src="layouthandling.js"></script>
+        <script src="currencyconvert.js"></script>
+    </body>
+</html>
